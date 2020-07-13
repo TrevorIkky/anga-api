@@ -69,6 +69,6 @@ class User extends Model
 
 	public function subscriptions()
 	{
-		return $this->hasMany(Subscription::class);
+		return $this->hasMany(Subscription::class,'user_id');
 	}
 }
