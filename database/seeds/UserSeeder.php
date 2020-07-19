@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +18,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\User::class,10)->create();
+        factory(User::class,10)->create();
     }
 }

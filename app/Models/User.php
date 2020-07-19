@@ -7,8 +7,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
@@ -17,10 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $username
  * @property string $password
  * @property string $token
- * @property float $lat
- * @property float $lon
- * @property Carbon $token_expire
- * @property Carbon $last_access
+ * @property float|null $lat
+ * @property float|null $lon
+ * @property Carbon|null $token_expire
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -28,10 +30,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property Collection|Analysi[] $analysis
  * @property Collection|Subscription[] $subscriptions
  *
- * @package App\Models
+ * @package App
  */
-class User extends Model
+class User extends Authenticatable
 {
+	use HasApiTokens, Notifiable;
+
+	
 	protected $table = 'users';
 	protected $primaryKey = 'user_id';
 
@@ -41,8 +46,7 @@ class User extends Model
 	];
 
 	protected $dates = [
-		'token_expire',
-		'last_access'
+		'token_expire'
 	];
 
 	protected $hidden = [
@@ -58,7 +62,6 @@ class User extends Model
 		'lat',
 		'lon',
 		'token_expire',
-		'last_access',
 		'remember_token'
 	];
 
@@ -69,6 +72,6 @@ class User extends Model
 
 	public function subscriptions()
 	{
-		return $this->hasMany(Subscription::class,'user_id');
+		return $this->hasMany(Subscription::class);
 	}
 }
