@@ -3,15 +3,11 @@
 /**
  * Created by Reliese Model.
  */
-
 namespace App\Models;
 
 use Carbon\Carbon;
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
@@ -19,11 +15,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property int $user_id
  * @property string $username
  * @property string $password
- * @property string $token
  * @property float|null $lat
  * @property float|null $lon
- * @property Carbon|null $token_expire
- * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -32,11 +25,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *
  * @package App
  */
-class User extends Authenticatable
+class User extends Model
 {
-	use HasApiTokens, Notifiable;
-
-	
 	protected $table = 'users';
 	protected $primaryKey = 'user_id';
 
@@ -45,24 +35,15 @@ class User extends Authenticatable
 		'lon' => 'float'
 	];
 
-	protected $dates = [
-		'token_expire'
-	];
-
 	protected $hidden = [
-		'password',
-		'token',
-		'remember_token'
+		'password'
 	];
 
 	protected $fillable = [
 		'username',
 		'password',
-		'token',
 		'lat',
-		'lon',
-		'token_expire',
-		'remember_token'
+		'lon'
 	];
 
 	public function analysis()

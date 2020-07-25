@@ -30,6 +30,10 @@ class CreateAnalysisTable extends Migration
      */
     public function down()
     {
+        Schema::table('analysis', function(Blueprint $table){
+            $table->dropForeign('user_id');
+            $table->dropForeign('subtopic_id');
+        });
         Schema::dropIfExists('analysis');
     }
 }

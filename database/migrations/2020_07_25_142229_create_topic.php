@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApiListTable extends Migration
+class CreateTopic extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateApiListTable extends Migration
      */
     public function up()
     {
-        Schema::create('api_list', function (Blueprint $table) {
-            $table->bigIncrements('api_id');
-            $table->string('url');
-          
+        Schema::create('topic', function (Blueprint $table) {
+            $table->bigIncrements('topic_id');
+            $table->string('topic', 200);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateApiListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api_list');
+        Schema::dropIfExists('topic');
     }
 }

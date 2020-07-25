@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subtopic;
 use App\Http\Requests\SubtopicRequest;
-use App\Subtopic;
+
 
 class SubtopicController extends Controller
 {

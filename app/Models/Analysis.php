@@ -21,9 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Subtopic $subtopic
  * @property User $user
  *
- * @package App\Models
+ * @package App
  */
-class Analysi extends Model
+class Analysis extends Model
 {
 	protected $table = 'analysis';
 	protected $primaryKey = 'analysis_id';

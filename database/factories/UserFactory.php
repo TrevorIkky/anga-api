@@ -2,12 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\ApiList;
-use App\Models\Subscription;
-use App\Models\Subtopic;
 use App\Models\User;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 /*
@@ -30,29 +26,5 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Subscription::class, function (Faker $faker) {
-    $user=User::all()->pluck('user_id')->take(rand(1,5));
-    return [
-        'user_id' => $user[0],
-        'topic' => $faker->sentence(),
 
-    ];
-});
 
-$factory->define(Subtopic::class, function (Faker $faker) {
-    $subscription=Subscription::all()->pluck('subscription_id')->take(rand(1,5));
-    return [
-        'subscription_id' => $subscription[0],
-        'subtopic' => $faker->sentence(),
-  
-    ];
-});
-
-$factory->define(ApiList::class, function (Faker $faker) {
-    $subscription=Subscription::all()->pluck('subscription_id')->take(5);
-    return [
-        'subscription_id' =>$subscription[0],
-        'url' => $faker->url,
-  
-    ];
-});

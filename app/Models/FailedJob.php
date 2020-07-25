@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $exception
  * @property Carbon $failed_at
  *
- * @package App\Models
+ * @package App
  */
 class FailedJob extends Model
 {

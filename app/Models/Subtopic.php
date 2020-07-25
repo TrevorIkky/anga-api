@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,36 +14,43 @@ use Illuminate\Database\Eloquent\Model;
  * Class Subtopic
  * 
  * @property int $subtopic_id
- * @property int $subscription_id
+ * @property int $topic_id
  * @property string $subtopic
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
- * @property Subscription $subscription
+ * @property Topic $topic
  * @property Collection|Analysi[] $analysis
+ * @property Collection|Subscription[] $subscriptions
  *
- * @package App\Models
+ * @package App
  */
 class Subtopic extends Model
 {
 	protected $table = 'subtopics';
 	protected $primaryKey = 'subtopic_id';
-	public $timestamps = false;
 
 	protected $casts = [
-		'subscription_id' => 'int'
+		'topic_id' => 'int'
 	];
 
 	protected $fillable = [
-		'subscription_id',
+		'topic_id',
 		'subtopic'
 	];
 
-	public function subscription()
+	public function topic()
 	{
-		return $this->belongsTo(Subscription::class);
+		return $this->belongsTo(Topic::class, 'topic_id');
 	}
 
 	public function analysis()
 	{
-		return $this->hasMany(Analysi::class);
+		return $this->hasMany(Analysis::class);
+	}
+
+	public function subscriptions()
+	{
+		return $this->hasMany(Subscription::class);
 	}
 }

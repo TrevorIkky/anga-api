@@ -15,9 +15,10 @@ class CreateSubtopicsTable extends Migration
     {
         Schema::create('subtopics', function (Blueprint $table) {
             $table->bigIncrements('subtopic_id');
-            $table->unsignedBigInteger('subscription_id');
-            $table->foreign('subscription_id')->references('subscription_id')->on('subscriptions')->onDelete('cascade');
+            $table->unsignedBigInteger('topic_id');
+            $table->foreign('topic_id')->references('topic_id')->on('topic');
             $table->string('subtopic');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,9 @@ class CreateSubtopicsTable extends Migration
      */
     public function down()
     {
+        Schema::table('subtopics', function(Blueprint $table){
+            $table->dropForeign('subtopic_id');
+        });
         Schema::dropIfExists('subtopics');
     }
 }

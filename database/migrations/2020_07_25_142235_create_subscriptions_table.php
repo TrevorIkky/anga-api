@@ -16,8 +16,10 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('subscription_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('subtopic_id');
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->string('topic');
+            $table->foreign('subtopic_id')->references('subtopic_id')->on('subtopics');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,10 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
+        Schema::table('subscriptions', function(Blueprint $table){
+            $table->dropForeign('user_id');
+            $table->dropForeign('topic_id');
+        });
         Schema::dropIfExists('subscriptions');
     }
 }

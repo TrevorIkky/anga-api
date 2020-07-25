@@ -6,7 +6,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,41 +14,37 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $subscription_id
  * @property int $user_id
- * @property string $topic
+ * @property int $subtopic_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
+ * @property Subtopic $subtopic
  * @property User $user
- * @property Collection|ApiList[] $api_lists
- * @property Collection|Subtopic[] $subtopics
  *
- * @package App\Models
+ * @package App
  */
 class Subscription extends Model
 {
 	protected $table = 'subscriptions';
 	protected $primaryKey = 'subscription_id';
-	public $timestamps = false;
 
 	protected $casts = [
-		'user_id' => 'int'
+		'user_id' => 'int',
+		'subtopic_id' => 'int'
 	];
 
 	protected $fillable = [
 		'user_id',
-		'topic'
+		'subtopic_id'
 	];
+
+	public function subtopic()
+	{
+		return $this->belongsTo(Subtopic::class);
+	}
 
 	public function user()
 	{
 		return $this->belongsTo(User::class);
-	}
-
-	public function api_lists()
-	{
-		return $this->hasMany(ApiList::class);
-	}
-
-	public function subtopics()
-	{
-		return $this->hasMany(Subtopic::class);
 	}
 }
