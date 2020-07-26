@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Analysis;
 use App\Http\Requests\AnalysisRequest;
-use App\Analysis;
+
 
 class AnalysisController extends Controller
 {

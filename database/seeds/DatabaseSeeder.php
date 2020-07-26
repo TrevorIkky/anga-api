@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ApiListSeeder::class,
             TopicSeeder::class,
-            SubtopicSeeder::class,
-            UserRelationSeeder::class
+            SubtopicSeeder::class
         ]);
     }
 }

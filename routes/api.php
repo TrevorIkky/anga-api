@@ -23,3 +23,20 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', 'AuthController@register');
     Route::post('/exists', 'AuthController@userExists');
 });
+
+Route::group(['prefix'=>'subscription'], function(){
+    Route::get('/all', 'SubscriptionController@index');
+    Route::get('/show/{id}', 'SubscriptionController@show');
+    Route::put('/add', 'SubscriptionController@store');
+    Route::delete('/delete/{id}', 'SubscriptionController@destroy');
+});
+
+Route::group(['prefix'=>'relation'], function(){
+    Route::put('/add', 'UserRelationMappingController@createRelation');
+    Route::patch('/update', 'UserRelationMappingController@updateRelation');
+    Route::post('/isRelated', 'UserRelationMappingController@checkIfRelated');
+});
+
+Route::group(['prefix'=>'subtopic'], function(){
+    Route::get('/all', 'SubtopicController@index');
+});

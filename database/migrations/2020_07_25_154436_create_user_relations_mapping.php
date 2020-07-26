@@ -19,6 +19,7 @@ class CreateUserRelationsMapping extends Migration
             $table->unsignedBigInteger('relation_to');
             $table->foreign('relation_start')->references('user_id')->on('users');
             $table->foreign('relation_to')->references('user_id')->on('users');
+            $table->boolean('accepted')->default(false);
             $table->timestamps();
         });
     }

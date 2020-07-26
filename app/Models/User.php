@@ -6,8 +6,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
@@ -25,8 +28,10 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App
  */
-class User extends Model
+class User extends Authenticatable
 {
+	use HasApiTokens, Notifiable;
+	
 	protected $table = 'users';
 	protected $primaryKey = 'user_id';
 
@@ -50,6 +55,8 @@ class User extends Model
 	{
 		return $this->hasMany(Analysi::class);
 	}
+
+	
 
 	public function subscriptions()
 	{
