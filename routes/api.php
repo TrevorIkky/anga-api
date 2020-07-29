@@ -40,3 +40,7 @@ Route::group(['prefix'=>'relation'], function(){
 Route::group(['prefix'=>'subtopic'], function(){
     Route::get('/all', 'SubtopicController@index');
 });
+
+Route::group(['prefix'=>'analysis'], function(){
+    Route::post('/weatherdata', 'AnalysisController@getWeatherData');
+});

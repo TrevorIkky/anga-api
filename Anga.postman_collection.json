@@ -121,7 +121,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"user_id\": 11,\n    \"subtopic_id\": 2\n}"
+					"raw": "{\n    \"user_id\": 11,\n    \"subtopic_id\": 2\n}",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/subscription/add",
@@ -206,7 +209,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/subscription/delete/3",
@@ -251,7 +257,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/subscription/all",
@@ -292,7 +301,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"to\": 11,\n    \"start\": 10\n}"
+					"raw": "{\n    \"to\": 11,\n    \"start\": 10\n}",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/relation/add",
@@ -333,7 +345,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"to\": 9,\n    \"start\": 10,\n    \"response\": false\n}"
+					"raw": "{\n    \"to\": 9,\n    \"start\": 10,\n    \"response\": false\n}",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/relation/update",
@@ -374,7 +389,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"otherid\": 11,\n    \"myid\": 10\n}"
+					"raw": "{\n    \"otherid\": 11,\n    \"myid\": 10\n}",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8000/api/relation/isRelated",
@@ -387,6 +405,37 @@
 						"api",
 						"relation",
 						"isRelated"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/aanalysis/weatherdata",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lat\": 35, \n    \"lng\": 139\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/analysis/weatherdata",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"analysis",
+						"weatherdata"
 					]
 				}
 			},

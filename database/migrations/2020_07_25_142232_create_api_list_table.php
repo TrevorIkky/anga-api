@@ -15,7 +15,10 @@ class CreateApiListTable extends Migration
     {
         Schema::create('api_list', function (Blueprint $table) {
             $table->bigIncrements('api_id');
-            $table->string('url');
+            $table->string('base');
+            $table->string('uri');
+            $table->unsignedBigInteger('topic_id');
+            $table->foreign('topic_id')->references('topic_id')->on('topic');
           
         });
     }
@@ -27,6 +30,9 @@ class CreateApiListTable extends Migration
      */
     public function down()
     {
+        Schema::table('api_list', function(Blueprint $table){
+            $table->dropForeign('topic_id');
+        });
         Schema::dropIfExists('api_list');
     }
 }
