@@ -7,6 +7,7 @@ use App\User;
 
 class UserController extends Controller
 {
+    
     public function index()
     {
         $users = User::latest()->get();
@@ -37,6 +38,20 @@ class UserController extends Controller
         return response(['data' => $user ], 200);
     }
 
+    
+    public function search(UserRequest $request)
+    {
+        $user=User::where('username','like',$request['username'])->get();
+        
+        return response()->json(['result'=>$user],200);
+    }
+
+    public function searchProfile(UserRequest $request)
+    {
+        $user=User::where('user_id','like',$request['user_id'])->get();
+        
+        return response()->json(['result'=>$user],200);
+    }
     public function destroy($id)
     {
         User::destroy($id);
