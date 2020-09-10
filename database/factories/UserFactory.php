@@ -22,7 +22,8 @@ $factory->define(User::class, function (Faker $faker) {
         'username' => $faker->name,
         'password' => Hash::make('password'),
         'lat' => rand(0.1,90.00),
-        'lon' => rand(0.1,90.00)
+        'lon' => rand(0.1,90.00),
+        'url'=>$faker->url
     ];
 });
 
