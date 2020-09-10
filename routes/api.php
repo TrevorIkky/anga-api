@@ -44,3 +44,9 @@ Route::group(['prefix'=>'subtopic'], function(){
 Route::group(['prefix'=>'analysis'], function(){
     Route::post('/weatherdata', 'AnalysisController@getWeatherData');
 });
+
+Route::group(['prefix'=>'user'],function(){
+ Route::post('/search','UserController@search');
+ Route::get('/profile','UserController@searchProfile');
+ Route::patch('/update','UserController@updateProfile');
+});

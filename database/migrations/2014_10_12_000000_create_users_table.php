@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->float('lat')->nullable();
             $table->float('lon')->nullable();
+            $table->string('url');
             $table->timestamps(); 
        
         });
